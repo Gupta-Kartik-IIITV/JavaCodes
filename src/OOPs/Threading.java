@@ -1,8 +1,7 @@
 package OOPs;
 import java.util.*;
-import java.util.concurrent.SynchronousQueue;
 
-class Thread1 implements Runnable{
+class Thread1 extends Thread{
     public ArrayList<Double> f;
     int n;
     Thread1(ArrayList<Double> f,int n){
@@ -16,13 +15,13 @@ class Thread1 implements Runnable{
         f.add((double)1);
         for(cnt = 2;cnt<n;cnt++){
             f.add(f.get(cnt-1) + f.get(cnt-2));
-            System.out.println("Fibbonacci Number= " + f.getLast()+" ");
+            System.out.println("Fibonacci Number= " + f.getLast()+" ");
         }
     }
 
 }
 
-class Thread2 implements Runnable{
+class Thread2 extends Thread{
     public  ArrayList<Double> currentSum;
     ArrayList<Double> f;
     int n;
@@ -46,7 +45,7 @@ class Thread2 implements Runnable{
     }
 }
 
-class Thread3 implements Runnable{
+class Thread3 extends Thread{
     public ArrayList<Integer> isPrime;
     ArrayList<Double> f;
     int n;
@@ -74,7 +73,7 @@ class Thread3 implements Runnable{
             isPrime.add(prime(f.getLast()));
             System.out.println("IsPrime = " + isPrime.getLast()+" ");
             i++;
-        }a
+        }
     }
 }
 
@@ -85,21 +84,17 @@ public class Threading {
         ArrayList<Double> currsum = new ArrayList<>();
         ArrayList<Integer> isPrime = new ArrayList<>();
 
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt()
+
+        Thread1 t1 = new Thread1(f,n);
+        Thread2 t2 = new Thread2(f,currsum,n);
+        Thread3 t3 = new Thread3(f,isPrime,n);
 
 
-        Thread1 th1 = new Thread1(f,1000);
-        Thread2 th2 = new Thread2(f,currsum,1000);
-        Thread3 th3 = new Thread3(f,isPrime,1000);
-
-        Thread t1 = new Thread(th1);
-        Thread t2 = new Thread(th2);
-        Thread t3 = new Thread(th3);
-
-
-
-        t1.setPriority(1);
+        t1.setPriority(3);
         t2.setPriority(2);
-        t3.setPriority(3);
+        t3.setPriority(1);
 
         t1.start();
         t2.start();
