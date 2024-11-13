@@ -85,7 +85,8 @@ public class Threading {
         ArrayList<Integer> isPrime = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt()
+        System.out.print("Number of Terms: ");
+        int n = sc.nextInt();
 
         Thread1 t1 = new Thread1(f,n);
         Thread2 t2 = new Thread2(f,currsum,n);
