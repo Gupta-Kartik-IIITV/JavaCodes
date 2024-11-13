@@ -74,7 +74,7 @@ class Thread3 implements Runnable{
             isPrime.add(prime(f.getLast()));
             System.out.println("IsPrime = " + isPrime.getLast()+" ");
             i++;
-        }
+        }a
     }
 }
 
